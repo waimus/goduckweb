@@ -13,6 +13,9 @@ onready var url_label = $"/root/Control/panel-background/panel-topbar/urlButton"
 
 func _ready():
 	grab_focus()
+	var touch_screen = OS.has_touchscreen_ui_hint()
+	if touch_screen: url_label.set_text("GoDuck running on " + OS.get_name() + " with touch screen support")
+	else: url_label.set_text("GoDuck running on " + OS.get_name() + " without touch screen")
 
 func _search_request():
 	# get text from the LineEdit which this script is attached to
